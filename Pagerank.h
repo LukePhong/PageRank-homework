@@ -1,15 +1,7 @@
 #ifndef PAGERANK_PAGERANK_H
 #define PAGERANK_PAGERANK_H
 
-#include <iostream>
-#include <map>
-#include <algorithm>
-#include <fstream>
-#include <cstdio>
-#include <sstream>
-#include <string>
-#include <cstdio>
-#include <set>
+#include <bits/stdc++.h>
 
 using namespace std;
 

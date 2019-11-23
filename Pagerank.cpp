@@ -259,7 +259,7 @@ void Pagerank::PageRank() {
     ofstream OO;
     OO.open("out.txt");
     for (int i = 0; i < total; i++) {
-        if (i >= 100) break;
+        //if (i >= 100) break;
         cout << index_node[oo[i].second] << " " << pr[oo[i].second] << endl;
         OO << index_node[oo[i].second] << " " << pr[oo[i].second] << endl;
     }

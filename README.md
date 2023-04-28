@@ -2,12 +2,14 @@
 大数据课程最后一项大作业实现pagerank算法
 
 * 语言：C/C++/JAVA/Python
-* 考虑dead ends 和spider trap 节点
-* 优化稀疏矩阵
-* 实现分块计算
-* 程序需要迭代至收敛
+* 考虑dead ends 和spider trap 节点  //应该怎样做才算是考虑了？
+* 优化稀疏矩阵  // 使用map<int, set<int>>就算是优化了？
+* 实现分块计算  // 确实
+* 程序需要迭代至收敛    // diff > convergence && counts < MaxIterations 也算是吧
 * 不可直接调用接口，例如实现pagerank时，调用Python的networkx包
 * 结果格式(.txt文件):[NodeID] [Score]
+* !!!还需要实现Block-Stripe Update algorithm
+* 如果有时间：并行加速、eigen库尝试、cuda尝试
 
 ---
 

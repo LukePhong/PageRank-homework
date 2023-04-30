@@ -18,20 +18,25 @@ void usage() {
          << " -a alpha" << endl
          << "    default is 0.85 " << endl
          << " -c convergence" << endl
-         << "    the convergence criterion default is 1e-5" << endl
+         << "    the convergence criterion default is 1e-6" << endl
          << " -m max_iterations" << endl
          << "    maximum number of iterations to perform" << endl
          << " -b blocknums" << endl
          << "    the number of blocknums, for some reason, the number shouldn't be larger than 100" << endl
+         << " -r break PR vector" << endl
+         << "    with this option, the page rank vector would be separated into blocknum part(s)" << endl
          << " the output file named out.txt" << endl;
 }
 
 int main(int argc, char **argv) {
     string input = "";
     Pagerank s;
-    s.setMaxIterations(1000);
+
+    // 初始化参数
+    s.setMaxIterations(1000);   
     s.setAlpha(0.85);
     s.setBlock_nums(4);
+
     for (size_t i = 1; i < argc; i++) {
         if (string(argv[i]) == "-t") {
             s.setTrace(true);
@@ -63,6 +68,8 @@ int main(int argc, char **argv) {
             long double tmpc = atof(argv[i + 1]);
             s.setConvergence(tmpc);
             i++;
+        } else if (string(argv[i]) == "-r") {
+            s.setSeparatePr(true);
         } else if (i == argc - 1) {
             input = argv[i];
         } else {
@@ -74,20 +81,18 @@ int main(int argc, char **argv) {
         usage();
         exit(1);
     }
-    // input="WikiData.txt";
+
     s.readForRange(input);
-    // s.setConvergence(1e-7);
-    //s.setTrace(true);
-    //cout<<"ss"<<endl;
-    auto start = steady_clock::now();
     s.readFile(input);
-    s.print();
-    s.PageRank();
+    s.printBasicGraphInfo();
+    auto start = steady_clock::now();   // 计时
+        s.PageRank();
     auto end = steady_clock::now();
     auto duration = duration_cast<microseconds>(end - start);
     cout << "use "
          << double(duration.count()) * microseconds::period::num / microseconds::period::den
          << " s" << endl;
+    s.outputFile("out.txt");
 
     return 0;
 }

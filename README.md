@@ -10,6 +10,7 @@
 * 结果格式(.txt文件):[NodeID] [Score]
 * !!!还需要实现Block-Stripe Update algorithm
 * 如果有时间：并行加速、eigen库尝试、cuda尝试
+* 增量计算？曾加一些网页后，如何不用重新完成整个迭代过程？
 
 ---
 
